@@ -1,0 +1,25 @@
+{
+  "name": "ztu-server",
+  "version": "1.0.0",
+  "description": "sec tech",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "keywords": [
+    "ztu",
+    "express",
+    "angular"
+  ],
+  "author": "MosPoly",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

@@ -1,0 +1,37 @@
+<div class="choose_file">
+    <label for="image_upload" class="upload_label">Выберите изображение для загрузки (PNG, JPG)</label>
+    <input type="file" id="image_upload" (change)="addPic($event.target.files)">
+</div>
+<div class="choose_file">
+    <label for="code_upload" class="upload_label">Выберите код для загрузки (PNG, JPG)</label>
+    <input type="file" id="code_upload" (change)="addCode($event.target.files)">
+</div>
+<section [ngStyle]="{display: isImageLoaded ? 'block' : 'none'}">
+    <canvas style="display: none" #m3s1c1></canvas>
+    <canvas style="display: none" #m3s1c2></canvas>
+    <canvas style="display: none" #m3s1c3></canvas>
+    <div class="canvasImage">
+        <div class="canvasImage__img" [ngStyle]="{backgroundImage: 'url('+ imgUrl +')', width: imgDivWidth + 'px', height: imgDivHeight + 'px'}"></div>
+        <div class="canvasImage__img" [ngStyle]="{backgroundImage: 'url('+ codeUrl +')', width: imgDivWidth + 'px', height: imgDivHeight + 'px'}"></div>
+    </div>
+    <h2 class="choose_channelH content">Выберите один из каналов RGB</h2>
+    <div class="channels content">
+        <div class="channels__grid_rgb">
+            <div class="imageChannels" [ngStyle]="{backgroundImage: 'url('+ channelUrlR +')'}" (click)="chooseChannel('r')">
+                <div class="galka" *ngIf="choosenChannel == 'r'"></div>
+            </div>
+            <div class="imageChannels" [ngStyle]="{backgroundImage: 'url('+ channelUrlG +')'}" (click)="chooseChannel('g')">
+                <div class="galka" *ngIf="choosenChannel == 'g'"></div>
+            </div>
+            <div class="imageChannels" [ngStyle]="{backgroundImage: 'url('+ channelUrlB +')'}" (click)="chooseChannel('b')">
+                <div class="galka" *ngIf="choosenChannel == 'b'"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="loading" *ngIf="isLoading">
+    <p>Загрузка</p>
+</div>
+<div class="btns" *ngIf="isImageLoaded">
+    <button (click)="nextStep()" [disabled]="!(isChoosen && isImageLoaded)" [ngClass]="{btn: true, btn_enabled: (isChoosen && isImageLoaded), btn_disabled: !(isChoosen && isImageLoaded)}">Далее</button>
+</div>
