@@ -6,9 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  prefx = 'http://localhost:5000/'
-
   constructor(private http: HttpClient) { }
+
+  checkImg(img) {
+    return this.http.post('/api/check', {img})
+  }
+
+  addToDb(type, img) {
+    return this.http.post('/api/methods/' + type, {img})
+  }
 
   m5updateEdges(blurRadius, trasholdL, trasholdU) {
     return this.http.post('/api/methods/5', {blurRadius, trasholdL, trasholdU})

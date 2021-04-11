@@ -6,7 +6,7 @@
       Войти
     </div>
   </div>
-  <button class="btn btn_enabled btn-check-img">Проверить изображение на наличие метки</button>
+  <button class="btn btn_enabled btn-check-img" [routerLink]="['/check']">Проверить изображение на наличие метки</button>
   <div *ngIf="auth.isAuth(); else noauth">
     <h2>Выберете метод защиты:</h2>
     <div class="methods">

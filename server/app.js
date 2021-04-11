@@ -7,6 +7,7 @@ mongoose.connect('mongodb+srv://db_user:A5i7gtf1A5i7gtf1@securetec.fhnnu.mongodb
     .catch((e) => console.log('not connected', e))
 
 const authRoutes = require('./routes/auth')
+const checkRoutes = require('./routes/check')
 const methodsRoutes = require('./routes/methods')
 const { users, ROLES } = require('./data')
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json())
 app.use(setUser)
 
 app.use('/api/auth', authRoutes)
+app.use('/api/check', checkRoutes)
 app.use('/api/methods', methodsRoutes)
 
 function setUser(req, res, next) {

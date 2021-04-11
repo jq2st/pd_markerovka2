@@ -33,6 +33,7 @@ import { MethFiveStep1Component } from './meth-five-page/meth-five-step1/meth-fi
 import { MethFiveStep2Component } from './meth-five-page/meth-five-step2/meth-five-step2.component';
 import { MethFiveStep3Component } from './meth-five-page/meth-five-step3/meth-five-step3.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { CheckimgPageComponent } from './checkimg-page/checkimg-page.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MethFiveStep1Component,
     MethFiveStep2Component,
     MethFiveStep3Component,
-    LoginPageComponent
+    LoginPageComponent,
+    CheckimgPageComponent
   ],
   imports: [
     BrowserModule,

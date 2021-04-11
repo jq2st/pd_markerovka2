@@ -1,18 +1,57 @@
+const History = require('../models/history')
+
 module.exports.method1 = function(req, res) {
+    linkImgBefore = 'before'
+    linkImgAfter = 'after'
+    type = '1'
+    info = 'none'
+    addToHistory(linkImgBefore, linkImgAfter, type, info)
     res.status(200).json({message: '1'})
 } 
 
 module.exports.method2 = function(req, res) {
+    linkImgBefore = 'before'
+    linkImgAfter = 'after'
+    type = '2'
+    info = 'none'
+    addToHistory(linkImgBefore, linkImgAfter, type, info)
     res.status(200).json({message: '2'})
 } 
 
 module.exports.method3 = function(req, res) {
+    linkImgBefore = 'before'
+    linkImgAfter = 'after'
+    type = '3'
+    info = 'none'
+    addToHistory(linkImgBefore, linkImgAfter, type, info)
     res.status(200).json({message: '3'})
 } 
 
 module.exports.method4 = function(req, res) {
+    linkImgBefore = 'before'
+    linkImgAfter = 'after'
+    type = '4'
+    info = 'none'
+    addToHistory(linkImgBefore, linkImgAfter, type, info)
     res.status(200).json({message: '4'})
 }
+
+module.exports.method5 = function(req, res) {
+    linkImgBefore = 'before'
+    linkImgAfter = 'after'
+    type = '5'
+    info = 'none'
+    addToHistory(linkImgBefore, linkImgAfter, type, info)
+    findEdges(req.body.blurRadius, req.body.trasholdL, req.body.trasholdU)
+    res.status(200).json(req.body)
+} 
+
+
+function addToHistory(linkImgBefore, linkImgAfter, type, info) {
+    const newHistory = new History({date: Date(), linkImgBefore: linkImgBefore, linkImgAfter: linkImgAfter, type: type, info: info})
+    newHistory.save()
+}
+
 
 function findPixel(oY, oX) {
     const c = this.arrChannelC[this.picParams.width * oY + oX]
@@ -286,7 +325,3 @@ function findEdges(blurRadius, trasholdL, trasholdU) {
     // removeExp()
 }
 
-module.exports.method5 = function(req, res) {
-    findEdges(req.body.blurRadius, req.body.trasholdL, req.body.trasholdU)
-    res.status(200).json(req.body)
-} 
