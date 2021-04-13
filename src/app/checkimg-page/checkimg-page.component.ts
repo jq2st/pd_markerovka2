@@ -18,6 +18,7 @@ export class CheckimgPageComponent implements OnInit {
   isImageLoaded: boolean = false
   reader = new FileReader()
   pic = new Image()
+  imgFile: File
   imgDivHeight = 300
   imgDivWidth = 0
   imgUrl = ''
@@ -52,6 +53,7 @@ export class CheckimgPageComponent implements OnInit {
       this.pic.src = this.reader.result as string
     }
     this.reader.readAsDataURL(files[0])
+    this.imgFile = files[0]
   }
 
   devideOnChannels(ctx) {
@@ -69,7 +71,7 @@ export class CheckimgPageComponent implements OnInit {
   }
 
   checkImg() {
-    this.api.checkImg('this.pic')
+    this.api.checkImg(this.imgFile)
       .subscribe(res => {
         console.log(res)
       })
