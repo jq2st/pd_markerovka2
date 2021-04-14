@@ -3,7 +3,7 @@ const controller = require('../controllers/methods')
 
 const router = express.Router()
 
-router.get('/1', controller.method1)
+router.post('/1', controller.method1)
 router.post('/2', controller.method2)
 router.post('/3', controller.method3)
 router.post('/4', controller.method4)

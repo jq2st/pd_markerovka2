@@ -2,54 +2,61 @@ const History = require('../models/history')
 
 module.exports.method1 = function(req, res) {
     linkImgBefore = 'before'
-    linkImgAfter = 'after'
+    linkImgAfter = req.file.path
     type = '1'
     info = 'none'
-    addToHistory(linkImgBefore, linkImgAfter, type, info)
-    res.status(200).json({message: '1'})
+    user = '1'
+    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
+      .then((result) => {
+        res.status(200).json(result)
+      })
 } 
 
 module.exports.method2 = function(req, res) {
     linkImgBefore = 'before'
-    linkImgAfter = 'after'
+    linkImgAfter = req.file.path
     type = '2'
     info = 'none'
-    addToHistory(linkImgBefore, linkImgAfter, type, info)
+    user = '1'
+    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
     res.status(200).json({message: '2'})
 } 
 
 module.exports.method3 = function(req, res) {
     linkImgBefore = 'before'
-    linkImgAfter = 'after'
+    linkImgAfter = req.file.path
     type = '3'
     info = 'none'
-    addToHistory(linkImgBefore, linkImgAfter, type, info)
+    user = '1'
+    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
     res.status(200).json({message: '3'})
 } 
 
 module.exports.method4 = function(req, res) {
     linkImgBefore = 'before'
-    linkImgAfter = 'after'
+    linkImgAfter = req.file.path
     type = '4'
     info = 'none'
-    addToHistory(linkImgBefore, linkImgAfter, type, info)
+    user = '1'
+    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
     res.status(200).json({message: '4'})
 }
 
 module.exports.method5 = function(req, res) {
     linkImgBefore = 'before'
-    linkImgAfter = 'after'
+    linkImgAfter = req.file.path
     type = '5'
     info = 'none'
-    addToHistory(linkImgBefore, linkImgAfter, type, info)
+    user = '1'
+    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
     findEdges(req.body.blurRadius, req.body.trasholdL, req.body.trasholdU)
     res.status(200).json(req.body)
 } 
 
 
-function addToHistory(linkImgBefore, linkImgAfter, type, info) {
-    const newHistory = new History({date: Date(), linkImgBefore: linkImgBefore, linkImgAfter: linkImgAfter, type: type, info: info})
-    newHistory.save()
+function addToHistory(linkImgBefore, linkImgAfter, type, info, user) {
+    const newHistory = new History({date: Date(), linkImgBefore: linkImgBefore, linkImgAfter: linkImgAfter, type: type, size: '1920x1080', info: info, user: user})
+    return newHistory.save()
 }
 
 

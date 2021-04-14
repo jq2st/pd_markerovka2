@@ -3,6 +3,7 @@ import { MethOneDataService } from 'src/app/services/meth-one-data.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { ChartsService } from 'src/app/services/charts.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-meth-one-step3',
@@ -54,7 +55,7 @@ export class MethOneStep3Component implements OnInit {
   ]
 
 
-  constructor(private methOneDataService: MethOneDataService, private chartsService: ChartsService) { }
+  constructor(private api: ApiService, private methOneDataService: MethOneDataService, private chartsService: ChartsService) { }
 
   ngOnInit() {
     this.canvas.nativeElement.width = this.methOneDataService.picParams.width;
@@ -70,6 +71,14 @@ export class MethOneStep3Component implements OnInit {
     ctx.putImageData(imageData, 0, 0)
     this.imgUrl = this.canvas.nativeElement.toDataURL('image/jpeg')
     this.imgDivWidth = this.canvas.nativeElement.width * (this.imgDivHeight / this.canvas.nativeElement.height)
+
+    const size = this.canvas.nativeElement.width + 'x' + this.canvas.nativeElement.height
+    const img = new File([this.api.dataURItoBlob(this.imgUrl)], 'm1result.png');
+    this.api.addToDb('1', img, size)
+      .subscribe(res => {
+        console.log(res)
+      })
+
     this.chartsService.renderChartsRGB(1, imageData.data)
     this.renderCharts(this.methOneDataService.amountChannelR, this.methOneDataService.amountChannelG, this.methOneDataService.amountChannelB)
   }
