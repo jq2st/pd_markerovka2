@@ -14,11 +14,19 @@ const historySchema = new Schema({
         type: String,
         required: true
     },
+    size: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
         required: true
     },
     info: {
+        type: String
+    },
+    user: {
+        ref: 'user',
         type: String
     }
 })

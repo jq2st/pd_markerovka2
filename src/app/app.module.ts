@@ -34,6 +34,7 @@ import { MethFiveStep2Component } from './meth-five-page/meth-five-step2/meth-fi
 import { MethFiveStep3Component } from './meth-five-page/meth-five-step3/meth-five-step3.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CheckimgPageComponent } from './checkimg-page/checkimg-page.component';
+import { CheckimgResultComponent } from './checkimg-page/checkimg-result/checkimg-result.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CheckimgPageComponent } from './checkimg-page/checkimg-page.component';
     MethFiveStep2Component,
     MethFiveStep3Component,
     LoginPageComponent,
-    CheckimgPageComponent
+    CheckimgPageComponent,
+    CheckimgResultComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { RgbCmykService } from '../services/rgb-smyk.service';
@@ -11,7 +11,7 @@ import { RgbCmykService } from '../services/rgb-smyk.service';
 export class CheckimgPageComponent implements OnInit {
 
   @ViewChild('m1s1c1', {static: false}) canvas: ElementRef
-  @Output() onNext: EventEmitter<any> = new EventEmitter()
+  @Output() onResult: EventEmitter<any> = new EventEmitter()
 
   isChoosen: boolean = false
   isLoading: boolean = false
@@ -22,6 +22,9 @@ export class CheckimgPageComponent implements OnInit {
   imgDivHeight = 300
   imgDivWidth = 0
   imgUrl = ''
+
+  isResult = false
+  result
 
   constructor(
     private rgbCmykService: RgbCmykService,
@@ -71,9 +74,11 @@ export class CheckimgPageComponent implements OnInit {
   }
 
   checkImg() {
-    this.api.checkImg(this.imgFile)
+    const size = this.pic.width + 'x' + this.pic.height
+    this.api.checkImg(this.imgFile, size)
       .subscribe(res => {
-        console.log(res)
+        this.isResult = true
+        this.result = {result: false, info: 'none'}
       })
   }
 

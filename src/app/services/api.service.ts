@@ -8,10 +8,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  checkImg(img) {
-    console.log(img)
+  checkImg(img, size) {
     let fd = new FormData()
     fd.append('image', img, img.name)
+    fd.append('size', size)
     return this.http.post('/api/check', fd)
   }
 
