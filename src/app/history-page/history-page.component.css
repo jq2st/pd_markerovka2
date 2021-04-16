@@ -3,6 +3,7 @@
     width: 150px;
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
 }
 .history__line {
    display: flex;
