@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { from } from 'rxjs';
 
@@ -35,6 +35,8 @@ import { MethFiveStep3Component } from './meth-five-page/meth-five-step3/meth-fi
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CheckimgPageComponent } from './checkimg-page/checkimg-page.component';
 import { CheckimgResultComponent } from './checkimg-page/checkimg-result/checkimg-result.component';
+import { TokenInterceptor } from './shared/classes/token.interceptor';
+import { RegPageComponent } from './reg-page/reg-page.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { CheckimgResultComponent } from './checkimg-page/checkimg-result/checkim
     MethFiveStep3Component,
     LoginPageComponent,
     CheckimgPageComponent,
-    CheckimgResultComponent
+    CheckimgResultComponent,
+    RegPageComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,13 @@ import { CheckimgResultComponent } from './checkimg-page/checkimg-result/checkim
     ChartsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: TokenInterceptor
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

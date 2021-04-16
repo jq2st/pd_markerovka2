@@ -27,7 +27,7 @@ const historySchema = new Schema({
     },
     user: {
         ref: 'users',
-        type: String
+        type: Object
     }
 })
 

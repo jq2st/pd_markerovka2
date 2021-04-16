@@ -9,10 +9,12 @@ import { MethFivePageComponent } from './meth-five-page/meth-five-page.component
 import { LoginPageComponent } from './login-page/login-page.component';
 import { Authguard } from './services/auth.guard';
 import { CheckimgPageComponent } from './checkimg-page/checkimg-page.component';
+import { RegPageComponent } from './reg-page/reg-page.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
   {path: 'login', component: LoginPageComponent},
+  {path: 'reg', component: RegPageComponent},
   {path: 'check', component: CheckimgPageComponent},
   {path: 'methone', component: MethOnePageComponent, canActivate: [Authguard]},
   {path: 'methtwo', component: MethTwoPageComponent, canActivate: [Authguard]},

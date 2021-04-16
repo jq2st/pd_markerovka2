@@ -1,5 +1,7 @@
 const Role = require("../models/roles")
 const User = require("../models/users")
+const keys = require("../config/keys")
+const jwt = require('jsonwebtoken')
 
 module.exports.login = async function(req, res) {
     const login = req.body.login
@@ -12,7 +14,8 @@ module.exports.login = async function(req, res) {
     if (user.password != password) {
         return res.status(403).json({message: 'wrong password'})
     }
-    res.status(200).json({token: 'token'})
+    const token = jwt.sign({userId: user._id}, keys.secret, {expiresIn: 3600})
+    res.status(200).json({token: 'Bearer ' + token})
 } 
 
 module.exports.reg = function(req, res) {
