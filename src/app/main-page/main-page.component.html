@@ -24,8 +24,14 @@
 </ng-template>
 
 <ng-template #noauth_log>
-  <div class="user-signin" (click)="auth.logout()">
-    <div class="user-signin__img_logout"></div>
-    Выйти
+  <div class="user-signin">
+    <div class="user-signin__item" [routerLink]="'/history'">
+      <div class="user-signin__img_history"></div>
+      <div class="user-signin__history">История меток</div>
+    </div>
+    <div class="user-signin__item"  (click)="auth.logout()">
+      <div class="user-signin__img_logout"></div>
+      Выйти
+    </div>
   </div>
 </ng-template>

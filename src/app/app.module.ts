@@ -37,6 +37,7 @@ import { CheckimgPageComponent } from './checkimg-page/checkimg-page.component';
 import { CheckimgResultComponent } from './checkimg-page/checkimg-result/checkimg-result.component';
 import { TokenInterceptor } from './shared/classes/token.interceptor';
 import { RegPageComponent } from './reg-page/reg-page.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { RegPageComponent } from './reg-page/reg-page.component';
     LoginPageComponent,
     CheckimgPageComponent,
     CheckimgResultComponent,
-    RegPageComponent
+    RegPageComponent,
+    HistoryPageComponent
   ],
   imports: [
     BrowserModule,

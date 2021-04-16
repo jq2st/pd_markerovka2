@@ -10,6 +10,7 @@ mongoose.connect('mongodb+srv://db_user:A5i7gtf1A5i7gtf1@securetec.fhnnu.mongodb
 const authRoutes = require('./routes/auth')
 const checkRoutes = require('./routes/check')
 const methodsRoutes = require('./routes/methods')
+const historyRoutes = require('./routes/history')
 const upload = require('./middleware/upload')
 const { ROLES } = require('./data')
 const User = require('./models/users')
@@ -23,6 +24,7 @@ app.use(bodyParser.json())
 app.use(setUser)
 
 app.use('/api/auth', authRoutes)
+app.use('/api/history', historyRoutes)
 app.use('/api/check', upload.single('image'), checkRoutes)
 app.use('/api/methods', upload.single('image'), methodsRoutes)
 

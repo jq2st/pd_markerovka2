@@ -23,6 +23,10 @@ export class ApiService {
     return this.http.post('/api/methods/' + type, fd)
   }
 
+  getHistory() {
+    return this.http.get('/api/history')
+  }
+
   m5updateEdges(blurRadius, trasholdL, trasholdU) {
     return this.http.post('/api/methods/5', {blurRadius, trasholdL, trasholdU})
   }
