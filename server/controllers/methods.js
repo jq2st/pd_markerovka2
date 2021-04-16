@@ -16,44 +16,65 @@ module.exports.method1 = function(req, res) {
 } 
 
 module.exports.method2 = function(req, res) {
-    linkImgBefore = 'before'
-    linkImgAfter = req.file.path
-    type = '2'
-    info = 'none'
-    user = req.user
-    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
-    res.status(200).json({message: '2'})
+  newHistory = {
+    linkImgBefore: 'before',
+    linkImgAfter: req.file.path,
+    size: req.body.size,
+    type: '2',
+    info: 'none',
+    user: req.user
+  }
+    addToHistory(newHistory)
+      .then((result) => {
+        res.status(200).json(result)
+      })
 } 
 
 module.exports.method3 = function(req, res) {
-    linkImgBefore = 'before'
-    linkImgAfter = req.file.path
-    type = '3'
-    info = 'none'
-    user = req.user
-    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
-    res.status(200).json({message: '3'})
+  newHistory = {
+    linkImgBefore: 'before',
+    linkImgAfter: req.file.path,
+    size: req.body.size,
+    type: '3',
+    info: 'code',
+    user: req.user
+  }
+    addToHistory(newHistory)
+      .then((result) => {
+        res.status(200).json(result)
+      })
 } 
 
 module.exports.method4 = function(req, res) {
-    linkImgBefore = 'before'
-    linkImgAfter = req.file.path
-    type = '4'
-    info = 'none'
-    user = req.user
-    addToHistory(linkImgBefore, linkImgAfter, type, info, user)
-    res.status(200).json({message: '4'})
+  newHistory = {
+    linkImgBefore: 'before',
+    linkImgAfter: req.file.path,
+    size: req.body.size,
+    type: '4',
+    info: 'none',
+    user: req.user
+  }
+    addToHistory(newHistory)
+    .then((result) => {
+      res.status(200).json(result)
+    })
 }
 
 module.exports.method5 = function(req, res) {
-    linkImgBefore = 'before'
-    linkImgAfter = req.file.path
-    type = '5'
-    info = 'none'
-    user = req.user
+  newHistory = {
+    linkImgBefore: 'before',
+    linkImgAfter: req.file.path,
+    size: req.body.size,
+    type: '5',
+    info: 'none',
+    user: req.user
+  }
     addToHistory(linkImgBefore, linkImgAfter, type, info, user)
-    findEdges(req.body.blurRadius, req.body.trasholdL, req.body.trasholdU)
-    res.status(200).json(req.body)
+    //findEdges(req.body.blurRadius, req.body.trasholdL, req.body.trasholdU)
+    addToHistory(newHistory)
+      .then((result) => {
+        res.status(200).json(result)
+      })
 } 
 
 

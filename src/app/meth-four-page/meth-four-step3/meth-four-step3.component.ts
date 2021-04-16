@@ -3,6 +3,7 @@ import { MethFourDataService } from 'src/app/services/meth-four-data.service';
 import { ChartsService } from 'src/app/services/charts.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-meth-four-step3',
@@ -62,7 +63,7 @@ export class MethFourStep3Component implements OnInit {
     { data: [], label: 'K Channel' }
   ]
 
-  constructor(private methFourDataService: MethFourDataService, private chartsService: ChartsService) { }
+  constructor(private api: ApiService, private methFourDataService: MethFourDataService, private chartsService: ChartsService) { }
 
   ngOnInit() {
     this.canvas.nativeElement.width = this.methFourDataService.picParams.width;
@@ -79,6 +80,12 @@ export class MethFourStep3Component implements OnInit {
     this.chartsService.renderChartsCMYK(4, imageData.data)
     this.imgUrl = this.canvas.nativeElement.toDataURL('image/jpeg')
     this.imgDivWidth = this.canvas.nativeElement.width * (this.imgDivHeight / this.canvas.nativeElement.height)
+    const size = this.canvas.nativeElement.width + 'x' + this.canvas.nativeElement.height
+    const img = new File([this.api.dataURItoBlob(this.imgUrl)], 'm4result.png');
+    this.api.addToDb('4', img, size)
+      .subscribe(res => {
+        console.log(res)
+      })
     this.renderCharts(this.methFourDataService.amountChannelC, this.methFourDataService.amountChannelM, this.methFourDataService.amountChannelY, this.methFourDataService.amountChannelK)
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 import { MethFiveDataService } from 'src/app/services/meth-five-data.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class MethFiveStep3Component implements OnInit {
   imgDivHeight = 600
   imgDivWidth = 0
 
-  constructor(private methFiveDataService: MethFiveDataService) { }
+  constructor(private api: ApiService, private methFiveDataService: MethFiveDataService) { }
 
   ngOnInit() {
     this.canvas.nativeElement.width = this.methFiveDataService.picParams.width;
@@ -31,6 +32,12 @@ export class MethFiveStep3Component implements OnInit {
     ctx.putImageData(imageData, 0, 0)
     this.imgUrl = this.canvas.nativeElement.toDataURL('image/jpeg')
     this.imgDivWidth = this.canvas.nativeElement.width * (this.imgDivHeight / this.canvas.nativeElement.height)
+    const size = this.canvas.nativeElement.width + 'x' + this.canvas.nativeElement.height
+    const img = new File([this.api.dataURItoBlob(this.imgUrl)], 'm5result.png');
+    this.api.addToDb('5', img, size)
+      .subscribe(res => {
+        console.log(res)
+      })
   }
   
   lastStep() {
