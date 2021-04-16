@@ -1,27 +1,44 @@
 # Проектная деятельность
 ## Маркировка и защитные технологии в упаковке
 ## Участники 
-Попов Андрей 181-323, 
-Сулейманов Булат 181-323, 
-Канатников Илья 191-321, 
-Полякова Екатерина 191-321, 
-Аширов Айрат 191-322, 
-Чивилев Валерий 191-322, 
-Емельянов А.М. 191-351, 
-Марков С.Е. 191-352, 
-Мельников Д.М. 191-352, 
-Поляков Д.А. 191-352
+Попов Андрей, 181-322, 
+Сулейманов Булат, 181-322
+## Запуск проекта
+```sh
+npm i
+npm run start
+cd server
+npm i
+npm run server
+```
+## Описание проекта
+Пользователь приложения может загрузить изоображение и проверить его на наличие метки. Для использования функционала добавления меток на изображение, необходимо зарегистрироваться и авторизоваться в системе.
+Авторизованномупользователю доступны 5 методов обработки изображений с целью введения меток. Каждый из методов представляет собой 3 шага: 
+1. Загрузка изображения
+2. Ввод характеристик метода изменения изображения
+3. Получение готового изображения
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+Информация о проверках и добавлениях меток сохраняется в базу данных. Авторизовнному поьзователю доступна его история внедрений меток.
+## База данных
+| Users | Roles | Queries | History |
+| ------ | ------ | ------ | ------ |
+| login: String, password: String, role: ref | role: String | date: Date, img: String, type?: String, info?: String, result: Boolean | date: Date, imgBefore: String, imgAfter: String, type: String, info?: String, user: ref |
+## Роутинг
+| /methods | /auth | [POST] /check | [POST] /history |
+| ------ | ------ | ------ | ------ |
+| [POST] /1 | [POST] /login | [POST] /check | [GET] /history |
+| [POST] /2 | [POST] /reg |  |  |
+| [POST] /3 |  |  |  |
+| [POST] /4 |  |  |  |
+| [POST] /5 |  |  |  |
 
-## Build
+| Маршрут | Запрос | Ответ | Описание |
+| ------ | ------ | ------ | ------ |
+| /methods/:id | token, {imgBefore, params: {}} | imgAfter | Загрузка, обработка, сохранение изображений на сервере, сохранение информации об этом в БД |
+| /auth/login | {login, password} | token | Проверка данных пользователя в БД, формирование токена |
+| /auth/reg | {login, password} | user | Добавление информации о новом пользователе в БД |
+| /check | {img} | result | Проверка изображения на наличие метки. Поиск идентичного изображения.  Добавление информации о запросе в БД |
+| /history | token | history | Поиск в БД всех записей о вводимых пользователем метках |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
