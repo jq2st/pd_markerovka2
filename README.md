@@ -36,11 +36,17 @@ Angular
 ### Backend
 NodeJS  
 Express  
-MongoDB  
+MongoDB
+
 ## База данных
 | Users | Roles | Queries | History |
 | ------ | ------ | ------ | ------ |
-| login: String, password: String, role: ref | role: String | date: Date, img: String, type?: String, info?: String, result: Boolean | date: Date, imgBefore: String, imgAfter: String, type: String, info?: String, user: ref |
+| login: String,  password: String, role: ref | role: String | date: Date, img: String, type?: String, info?: String, result: Boolean | date: Date, imgBefore: String, imgAfter: String, type: String, info?: String, user: ref |
+Требования:  
+- Роли срдержатся в отднльной таблице
+- Для пользователей должны храниться login, пароль, роль
+- Таблица запросов проверок должна содержать поля: ссылка на загруженное изображение, дата и время загрузки, результат проверки, тип метки и информация в метке (если срдержатся)
+- Таблица истории введения меток должна содержать поля: дата и время загрузки, ссылка на результат обработки, тип метки, информация в метке (если срдержится), пользователь, загрузивший изображение
 ## Роутинг
 | /methods | /auth | [POST] /check | [POST] /history |
 | ------ | ------ | ------ | ------ |
