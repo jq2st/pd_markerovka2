@@ -42,6 +42,7 @@ MongoDB
 | Users | Roles | Queries | History |
 | ------ | ------ | ------ | ------ |
 | login: String,  password: String, role: ref | role: String | date: Date, img: String, type?: String, info?: String, result: Boolean | date: Date, imgBefore: String, imgAfter: String, type: String, info?: String, user: ref |
+
 Требования:  
 - Роли срдержатся в отднльной таблице
 - Для пользователей должны храниться login, пароль, роль
