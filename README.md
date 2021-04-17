@@ -31,12 +31,12 @@ npm run server
 ## Реализация
 ### Frontend
 Angular
-Обработка изображений происходит на Canvas при помощи пиксильнымх манипуляций
+Обработка изображений происходит на Canvas при помощи пиксильнымх манипуляций  
 Для отбражения графиков светлот слоёв изображений используется Chart.js
 ### Backend
-NodeJS
-Express
-MongoDB
+NodeJS  
+Express  
+MongoDB  
 ## База данных
 | Users | Roles | Queries | History |
 | ------ | ------ | ------ | ------ |
