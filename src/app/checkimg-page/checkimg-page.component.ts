@@ -78,7 +78,7 @@ export class CheckimgPageComponent implements OnInit {
     this.api.checkImg(this.imgFile, size)
       .subscribe(res => {
         this.isResult = true
-        this.result = {result: false, info: 'none'}
+        this.result = res
       })
   }
 
