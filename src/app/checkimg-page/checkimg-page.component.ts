@@ -10,7 +10,7 @@ import { RgbCmykService } from '../services/rgb-smyk.service';
 })
 export class CheckimgPageComponent implements OnInit {
 
-  @ViewChild('m1s1c1', {static: false}) canvas: ElementRef
+  @ViewChild('m1s1c1') canvas: ElementRef
   @Output() onResult: EventEmitter<any> = new EventEmitter()
 
   isChoosen: boolean = false

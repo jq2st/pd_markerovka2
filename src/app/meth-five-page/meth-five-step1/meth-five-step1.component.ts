@@ -9,7 +9,7 @@ import { MethFiveDataService } from 'src/app/services/meth-five-data.service';
 })
 export class MethFiveStep1Component {
 
-  @ViewChild('m5s1c1', {static: false}) canvas: ElementRef
+  @ViewChild('m5s1c1') canvas: ElementRef
   @Output() onNext: EventEmitter<any> = new EventEmitter()
 
   isChoosen: boolean = false

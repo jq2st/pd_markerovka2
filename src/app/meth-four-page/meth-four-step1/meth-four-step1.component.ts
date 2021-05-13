@@ -12,7 +12,7 @@ import { ChartsService } from 'src/app/services/charts.service';
 })
 export class MethFourStep1Component implements OnInit {
 
-  @ViewChild('m4s1c1', {static: false}) canvas: ElementRef
+  @ViewChild('m4s1c1') canvas: ElementRef
   @Output() onNext: EventEmitter<any> = new EventEmitter()
 
   isChoosen: boolean = false

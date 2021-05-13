@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MethTwoPageComponent } from './meth-two-page.component';
 
@@ -6,7 +6,7 @@ describe('MethTwoPageComponent', () => {
   let component: MethTwoPageComponent;
   let fixture: ComponentFixture<MethTwoPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MethTwoPageComponent ]
     })

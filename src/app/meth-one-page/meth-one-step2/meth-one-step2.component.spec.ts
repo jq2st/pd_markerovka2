@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MethOneStep2Component } from './meth-one-step2.component';
 
@@ -6,7 +6,7 @@ describe('MethOneStep2Component', () => {
   let component: MethOneStep2Component;
   let fixture: ComponentFixture<MethOneStep2Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MethOneStep2Component ]
     })

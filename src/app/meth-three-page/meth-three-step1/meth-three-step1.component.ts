@@ -8,9 +8,9 @@ import { MethThreeDataService } from 'src/app/services/meth-three-data.service';
 })
 export class MethThreeStep1Component implements OnInit {
 
-  @ViewChild('m3s1c1', {static: false}) canvas: ElementRef
-  @ViewChild('m3s1c2', {static: false}) canvasChannels: ElementRef
-  @ViewChild('m3s1c3', {static: false}) canvasCode: ElementRef
+  @ViewChild('m3s1c1') canvas: ElementRef
+  @ViewChild('m3s1c2') canvasChannels: ElementRef
+  @ViewChild('m3s1c3') canvasCode: ElementRef
   @Output() onNext: EventEmitter<any> = new EventEmitter()
 
   isChoosen: boolean = false

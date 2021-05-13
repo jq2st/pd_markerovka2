@@ -13,7 +13,7 @@ import { ChartsService } from 'src/app/services/charts.service';
 })
 export class MethTwoStep1Component {
 
-  @ViewChild('m2s1c1', {static: false}) canvas: ElementRef
+  @ViewChild('m2s1c1') canvas: ElementRef
   @Output() onNext: EventEmitter<any> = new EventEmitter()
 
   isChoosen: boolean = false
