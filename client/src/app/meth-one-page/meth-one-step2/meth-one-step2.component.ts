@@ -33,10 +33,11 @@ export class MethOneStep2Component {
     }
   }
 
-  randomUniqInt(min, max, arr) {
-    let newRandomInt = min + Math.floor((max - min) * Math.random())
+  randomUniqInt(min, uniqArr, arr) {
+    let newRandomK = min + Math.floor((uniqArr.length - min) * Math.random())
+    let newRandomInt = uniqArr[newRandomK]
     if (!arr.includes(newRandomInt)) return newRandomInt
-    else this.randomUniqInt(min, max, arr)
+    else this.randomUniqInt(min, uniqArr, arr)
   }
 
   lastStep() {
@@ -57,11 +58,15 @@ export class MethOneStep2Component {
         newCodeNumArr = this.methOneDataService.arrChannelB
         break
     }
+    let set = new Set(newCodeNumArr);
+    let uniqArr = Array.from(set);
     for (let i = 0; i < +this.num; i++) {
-      randomColorValues.push(this.randomUniqInt(0, 255, randomColorValues))
+      randomColorValues.push(this.randomUniqInt(0, uniqArr, randomColorValues))
     }
-    randomColorValues.forEach(n => {
-      newCodeNumArr[n] += 1 
+    newCodeNumArr.forEach((n, i, arr) => {
+      if (randomColorValues.includes(n)) {
+        arr[i] += 1
+      }
     })
     this.generateNewImage(newCodeNumArr, this.methOneDataService.choosenChannel)
     this.methOneDataService.newChoosenChannel = newCodeNumArr
