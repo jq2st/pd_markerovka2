@@ -70,7 +70,7 @@ import { HistoryPageComponent } from './history-page/history-page.component';
     HistoryPageComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

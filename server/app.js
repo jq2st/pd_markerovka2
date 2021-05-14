@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://db_user:A5i7gtf1A5i7gtf1@securetec.fhnnu.mongodb.net/markerovka?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true })
@@ -28,6 +29,18 @@ app.use('/api/auth', authRoutes)
 app.use('/api/history', historyRoutes)
 app.use('/api/check', upload.single('image'), checkRoutes)
 app.use('/api/methods', upload.single('image'), methodsRoutes)
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('../dist/pd/browser'))
+  
+    app.get('*', (req, res) => {
+      res.sendFile(
+        path.resolve(
+          __dirname, '..', 'dist', 'pd', 'browser', 'index.html'
+        )
+      )
+    })
+  }
 
 async function setUser(req, res, next) {
     if (req.headers.authorization) {

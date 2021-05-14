@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CheckResult } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-checkimg-result',
@@ -7,10 +8,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class CheckimgResultComponent implements OnInit {
 
-  @Input('result') inResult
+  @Input('result') inResult: CheckResult
   @Output() onClose: EventEmitter<any> = new EventEmitter()
 
-  result = {}
+  result: CheckResult
   compare = {
     1: 'Изъятие нескольких уровней в диапазоне канала',
     2: 'Введение штрихового кода в тоновый диапазон канала RGB',
